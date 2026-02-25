@@ -1,2 +1,1 @@
-Belum dideploy ke Streamlit Community Cloud dari lingkungan ini.
-Setelah deploy, ganti isi file ini dengan URL publik dashboard Anda.
+https://air-qualiity-x4kfpuhq2hftjtf4rtxfnq.streamlit.app/

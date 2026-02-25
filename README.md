@@ -13,11 +13,11 @@ Proyek ini memenuhi alur analisis lengkap:
 - Conclusion + rekomendasi
 - Dashboard Streamlit interaktif
 
-Empat pertanyaan analisis yang dijawab (sesuai kriteria minimum: 2 bisnis + 2 analisis lanjutan tanpa ML):
-1. Q1 (Pertanyaan Bisnis): Area mana yang memerlukan intervensi prioritas berdasarkan tingkat polusi PM2.5 dan gas polutan, serta bagaimana tren perbaikannya dari waktu ke waktu?
-2. Q2 (Pertanyaan Bisnis): Kapan waktu-waktu kritis yang perlu menjadi fokus pengawasan emisi dan perlindungan kesehatan masyarakat?
-3. Q3 (Pertanyaan Analisis Lanjutan tanpa ML): Faktor meteorologi apa yang paling berkontribusi terhadap peningkatan risiko polusi, sehingga bisa dijadikan indikator peringatan dini?
-4. Q4 (Pertanyaan Analisis Lanjutan - AQI Multi-Polutan tanpa ML): Polutan apa yang menjadi penyebab utama penurunan kualitas udara, dan bagaimana prioritas pengendaliannya berdasarkan tingkat risikonya?
+Empat pertanyaan analisis yang dijawab:
+1. Q1 (Temporal): Pada periode 2013-2017, bagaimana tren perbaikan kualitas udara dan kapan waktu kritis (jam, hari, bulan, tahun) yang perlu menjadi fokus pengawasan polutan?
+2. Q2 (Meteorologi): Pada setiap musim dalam periode 2013-2017, faktor meteorologi apa yang paling berkontribusi terhadap peningkatan risiko polusi?
+3. Q3 (Clustering/Binning AQI Multi-Polutan tanpa ML): Berdasarkan data periode 2013-2017, polutan apa yang menjadi penyebab utama penurunan kualitas udara dan bagaimana prioritas pengendaliannya berdasarkan tingkat risiko?
+4. Q4 (Geospasial + Clustering Manual tanpa ML): Pada periode 2013-2017, area mana yang memerlukan intervensi prioritas berdasarkan tingkat polusi PM2.5 dan gas polutan?
 
 ## Struktur Direktori
 
@@ -28,9 +28,8 @@ submission-final/
 │   └── main_data.csv
 ├── data/
 │   ├── air_quality_hourly_all_stations.csv
-│   ├── station_coordinates.csv
-│   └── raw/
-├── notebook.ipynb
+│   └── station_coordinates.csv
+├── notebook-revisi.ipynb
 ├── requirements.txt
 ├── README.md
 └── url.txt
@@ -54,7 +53,7 @@ pip install -r requirements.txt
 
 ### Jalankan Notebook
 ```bash
-jupyter notebook notebook.ipynb
+jupyter notebook notebook-revisi.ipynb
 ```
 
 ### Jalankan Dashboard Streamlit
@@ -84,11 +83,11 @@ Jika build gagal:
 
 ## Navigasi Dashboard
 
-Dashboard menampilkan ringkasan metrik di bagian atas dan terdiri dari 4 tab utama:
-1. **Area Prioritas (Q1)**: tren PM2.5, ranking stasiun prioritas, perbandingan zona geospasial, dan clustering manual stasiun berbasis gas polutan.
-2. **Waktu Kritis (Q2)**: tren bulanan, heatmap jam-bulan, distribusi musiman, serta ringkasan bulan/jam puncak polutan.
-3. **Dampak Cuaca (Q3)**: korelasi Spearman PM-meteorologi dan gas-meteorologi pada skala musim/tahun/bulan/jam, plus analisis arah angin (`wd`).
-4. **Risiko AQI (Q4)**: distribusi kategori AQI overall resmi, ranking polutan berisiko, dan ringkasan stasiun terbaik/terburuk berdasarkan AQI.
+Dashboard menampilkan ringkasan metrik di bagian atas dan mencakup 4 fokus analisis utama:
+1. **Q1 - Tren dan Waktu Kritis**: history trend, heatmap jam-bulan, summary table, dan insight dinamis berbasis filter.
+2. **Q2 - Meteorologi dan Risiko Polusi**: season averages, seasonal distribution, korelasi musiman dengan faktor meteorologi, arah angin, dan insight dinamis.
+3. **Q3 - Risiko AQI Overall**: distribusi kategori AQI overall, persentase kategori per stasiun, serta ringkasan 3 stasiun terbaik/terburuk.
+4. **Q4 - Geospasial**: peta area prioritas berbasis PM2.5/AQI dengan cluster prioritas, dilengkapi countplot AQI per zona.
 
 ## Catatan
 
